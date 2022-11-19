@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal">
+
+    <data >
+        <variable
+            name="resource"
+            type="com.ics.mad.model.data.CodingResource" />
+
+    </data>
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal">
+
+       <com.google.android.material.card.MaterialCardView
+           android:layout_width="150dp"
+           android:layout_height="120dp"
+           android:layout_gravity="center_vertical"
+           android:elevation="5dp"
+           app:cardCornerRadius="20dp">
+
+           <ImageView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:scaleType="centerCrop"
+               android:adjustViewBounds="true"
+               android:src="@drawable/ic_launcher_background"
+
+       </com.google.android.material.card.MaterialCardView>
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="10dp"
+           android:layout_gravity="center_vertical"
+           android:orientation="vertical">
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@{resource.description}"
+               android:fontFamily="sans-serif-condensed-medium"
+               android:textSize="18sp"
+               android:textColor="@color/black"
+               android:maxLines="2"
+               android:ellipsize="end"/>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal"
+               android:gravity="center_vertical">
+
+               <com.google.android.material.chip.ChipGroup
+                   android:id="@+id/types"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   app:singleSelection="false"/>
+
+               <com.google.android.material.chip.ChipGroup
+                   android:id="@+id/topics"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   app:singleSelection="false"/>
+
+
+               <com.google.android.material.chip.ChipGroup
+                   android:id="@+id/levels"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   app:singleSelection="false"/>
+
+
+           </LinearLayout>
+
+       </LinearLayout>
+
+   </LinearLayout>
+
+</layout>
