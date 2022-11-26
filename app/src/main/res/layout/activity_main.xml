@@ -6,10 +6,6 @@
 
     <data>
         <variable
-            name="viewmodel"
-            type="com.ics.mad.viewmodel.MainViewModel" />
-
-        <variable
             name="adapter"
             type="com.ics.mad.view.adapter.ResourcesAdapter" />
     </data>

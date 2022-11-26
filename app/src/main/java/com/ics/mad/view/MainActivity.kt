@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.ics.mad.R
 import com.ics.mad.databinding.ActivityMainBinding
+import com.ics.mad.model.repository.CodingResourcesRepo
 import com.ics.mad.view.adapter.ResourcesAdapter
 import com.ics.mad.viewmodel.MainViewModel
 
@@ -21,9 +22,10 @@ class MainActivity : AppCompatActivity() {
 
         val lifecycleOwner = this
 
+        mainViewModel = MainViewModel(CodingResourcesRepo())
+
         binding.apply {
-            viewmodel = mainViewModel
-            viewmodel.codingResources.observe(lifecycleOwner, Observer { list ->
+            mainViewModel.codingResources.observe(lifecycleOwner, Observer { list ->
                 adapter = ResourcesAdapter(list)
             })
         }
