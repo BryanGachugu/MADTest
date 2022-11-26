@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="10dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data >
         <variable
@@ -16,6 +12,7 @@
    <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
+       android:padding="5dp"
        android:orientation="horizontal">
 
        <com.google.android.material.card.MaterialCardView
@@ -30,7 +27,7 @@
                android:layout_height="match_parent"
                android:scaleType="centerCrop"
                android:adjustViewBounds="true"
-               android:src="@drawable/ic_launcher_background"
+               android:src="@drawable/ic_launcher_background"/>
 
        </com.google.android.material.card.MaterialCardView>
 
