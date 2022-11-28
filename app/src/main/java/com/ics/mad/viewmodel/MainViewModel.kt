@@ -7,6 +7,4 @@ class MainViewModel(codingResourcesRepo: CodingResourcesRepo) : ViewModel() {
 
    val codingResources = codingResourcesRepo.getAllResources()
 
-
-
 }

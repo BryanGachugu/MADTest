@@ -12,23 +12,45 @@ class CodingResourcesRepo(private val context: Context) {
 
     private val url = "https://api.sampleapis.com/codingresources/codingResources"
 
-    private lateinit var codingResources: MutableLiveData<MutableList<CodingResource>>
+    private var codingResources = MutableLiveData<MutableList<CodingResource>>()
 
     fun getAllResources(): MutableLiveData<MutableList<CodingResource>> {
         val resourcesRequest = StringRequest(Method.GET, url,
             { response ->
                 val responseArray = JSONArray(response)
                 val myList = mutableListOf<CodingResource>()
-                for (pos in 0..responseArray.length()){
+                for (pos in 0 until  responseArray.length()) {
+                    //each object
                     val resourceObject = responseArray.getJSONObject(pos)
-                    val codingResource = CodingResource(resourceObject.getInt("id"),
-                    resourceObject.getString("description"),
-                    resourceObject.getString("url"),
-                    resourceObject.getJSONObject("types") as List<String>,
-                    resourceObject.getJSONObject("topics") as List<String>,
-                    resourceObject.getJSONObject("levels") as List<String>
+
+                    //types list
+                    val types = mutableListOf<String>()
+                    val typesArrayObject = resourceObject.getJSONArray("types")
+                    for (typePos in 0 until typesArrayObject.length())
+                        types.add(typesArrayObject.getString(typePos))
+
+                    // topics list
+                    val topics = mutableListOf<String>()
+                    val topicsArrayObject = resourceObject.getJSONArray("topics")
+                    for (topicPos in 0 until topicsArrayObject.length())
+                        topics.add(topicsArrayObject.getString(topicPos))
+
+                    //levels
+                    val levels = mutableListOf<String>()
+                    val levelsArrayObject = resourceObject.getJSONArray("levels")
+                    for (levelPos in 0 until  levelsArrayObject.length())
+                        levels.add(levelsArrayObject.getString(levelPos))
+
+                    val codingResource = CodingResource(
+                        resourceObject.getInt("id"),
+                        resourceObject.getString("description"),
+                        resourceObject.getString("url"),
+                        types,
+                        topics,
+                        levels
                     )
                     myList.add(codingResource)
+
                     codingResources.postValue(myList)
                 }
             }, {
